@@ -1,0 +1,4 @@
+hopsworks
+hopsworks_common
+hsfs
+hsml

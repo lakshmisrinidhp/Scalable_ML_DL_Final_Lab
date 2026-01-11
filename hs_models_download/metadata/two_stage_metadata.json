@@ -1,0 +1,45 @@
+{
+  "created_at": "2026-01-06T16:02:22.222369Z",
+  "problem": "JFK departure delay minutes (two-stage)",
+  "stage1": {
+    "type": "classifier",
+    "model": "LogisticRegression",
+    "cat_cols": [
+      "reporting_airline",
+      "dest"
+    ],
+    "num_cols": [
+      "month",
+      "day_of_week",
+      "distance",
+      "weather_jfk_hourly_fg_weather_code",
+      "weather_jfk_hourly_fg_wind_speed_ms",
+      "weather_jfk_hourly_fg_wind_gust_ms",
+      "weather_jfk_hourly_fg_temp_c",
+      "weather_jfk_hourly_fg_precip_mm",
+      "weather_jfk_hourly_fg_snowfall_cm"
+    ]
+  },
+  "stage2": {
+    "type": "regressor",
+    "model": "HistGradientBoostingRegressor"
+  },
+  "decision_rule": {
+    "threshold_type": "MAE-tuned",
+    "best_threshold": 0.7999999999999999,
+    "rule": "if P(delay)>threshold => predict regressor minutes else 0"
+  },
+  "feature_cols": [
+    "month",
+    "day_of_week",
+    "reporting_airline",
+    "dest",
+    "distance",
+    "weather_jfk_hourly_fg_weather_code",
+    "weather_jfk_hourly_fg_wind_speed_ms",
+    "weather_jfk_hourly_fg_wind_gust_ms",
+    "weather_jfk_hourly_fg_temp_c",
+    "weather_jfk_hourly_fg_precip_mm",
+    "weather_jfk_hourly_fg_snowfall_cm"
+  ]
+}
