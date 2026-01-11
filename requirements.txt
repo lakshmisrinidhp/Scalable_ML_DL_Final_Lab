@@ -5,3 +5,4 @@ requests
 pyarrow
 streamlit
 python-dotenv
+hopsworks
